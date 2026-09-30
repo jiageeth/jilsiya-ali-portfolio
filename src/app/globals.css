@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens: edit these to re-theme the whole site. Values are "R G B". */
+:root {
+  --bg: 244 246 250;
+  --surface: 255 255 255;
+  --ink: 20 27 45;
+  --muted: 88 97 120;
+  --line: 214 219 230;
+  --accent: 47 91 234;
+  --accent-ink: 255 255 255;
+}
+
+.dark {
+  --bg: 13 18 32;
+  --surface: 20 27 46;
+  --ink: 232 236 246;
+  --muted: 152 162 186;
+  --line: 40 49 75;
+  --accent: 124 156 255;
+  --accent-ink: 13 18 32;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
+  }
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+}
